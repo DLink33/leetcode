@@ -1,13 +1,10 @@
 # Byte-compiled / optimized / DLL files
-__pycache__/
+**/__pycache__/
 *.py[cod]
 *$py.class
 
-# Virtual environments
-.venv/
-venv/
-ENV/
-env/
+# Virtual environments (ignore any .venv folder anywhere)
+**/.venv/
 
 # VS Code
 .vscode/
