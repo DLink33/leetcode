@@ -1,8 +1,10 @@
+#! .venv/bin/python
 """
 
 6. Zigzag Conversion
 
-The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows
+like this: (you may want to display this pattern in a fixed font for better legibility)
 
 P   A   H   N
 A P L S I I G
@@ -46,10 +48,12 @@ class Solution:
 
 
 def main():
-    testStr = "PAYPALISHIRING"
-    nRows = 3
-    mySol = Solution()
-    print(mySol.convert(testStr, nRows))
+    sol = Solution()
+    print(sol.convert("PAYPALISHIRING", 3))  # PAHNAPLSIIGYIR
+    print(sol.convert("PAYPALISHIRING", 4))  # PINALSIGYAHRPI
+    print(sol.convert("ABCD", 2))  # ACBD
+    print(sol.convert("A", 1))  # A
+    print(sol.convert("ABCDE", 4))  # ABCED
 
 
 if __name__ == "__main__":
