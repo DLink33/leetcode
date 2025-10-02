@@ -1,7 +1,7 @@
 # tests/test_lc006_zigzag.py
 import pytest
 
-from ..src.lc006_zigzag import Solution
+from lc006_zigzag import Solution
 
 
 @pytest.fixture
