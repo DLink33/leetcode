@@ -1,6 +1,5 @@
 # tests/test_lc006_zigzag.py
 import pytest
-
 from lc006_zigzag import Solution
 
 
