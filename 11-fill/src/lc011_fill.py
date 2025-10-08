@@ -22,8 +22,8 @@ class Solution:
 
 def main():
     h = [1, 8, 6, 2, 5, 4, 8, 3, 7]
-    s = Solution()
-    rslt = s.maxArea(h)
+    smoke = Solution()
+    rslt = smoke.maxArea(h)
     print(rslt)
 
 
