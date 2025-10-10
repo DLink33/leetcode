@@ -4,46 +4,54 @@
 class Solution:
     def __init__(self):
         self.roman = (
-            [ (5,'V'), (1, 'I') ],
-            [ (50, 'L'), (10, 'X') ],
-            [ (500, 'D'), (100, 'C') ],
-            [ (1000, 'M') ]
+            [(5, "V"), (1, "I")],
+            [(50, "L"), (10, "X")],
+            [(500, "D"), (100, "C")],
+            [(1000, "M")],
         )
-    def numDigits(self, num:int) -> int:
+
+    def numDigits(self, num: int) -> int:
         rslt = 0
-        while (num > 0):
+        while num > 0:
             num //= 10
-            rslt+=1
+            rslt += 1
         return rslt
-    def intToRoman(self, num:int) -> str:
+
+    def intToRoman(self, num: int) -> str:
         roman = self.roman
         rslt = ""
         digits = self.numDigits(num)
+        i = 0
+        while i < digits:
+            p = digits - i - 1  # place power (3=thousands, 2=hundreds, 1=tens, 0=ones)
+            d = (num // (10**p)) % 10  # current digit at this place
 
-        for i in range(digits):
-            for div in roman[digits-(i+1)]:
-                if not ((num // div[0]) == 4 or (num// div[0] == 9)):
-                    numChars = num // div[0]
-                    rslt = rslt + div[1]*numChars
-                    if numChars:
-                        num -= div[0]*numChars
-                elif((num // div[0]) == 4):
-                    rslt += (roman[i][0][1] + roman[i][1][1])
-                    num -= (div[0]*4)
-                    continue
-                else:
-                    rslt += (roman[i][1][1] + roman[i+1][0][1])
-                    num -= (div[0]*9)
-                    continue
+            if p == 3:  # thousands
+                rslt += "M" * d
+            else:
+                one = roman[p][1][1]  # I, X, C
+                five = roman[p][0][1]  # V, L, D
+                # next place's "ten" symbol: use its 'one' if present, else the only symbol (thousands)
+                nxt = roman[p + 1]
+                ten = nxt[1][1] if len(nxt) > 1 else nxt[0][1]  # X, C, M
 
-                    
-        
+                if d <= 3:
+                    rslt += one * d
+                elif d == 4:
+                    rslt += one + five
+                elif d <= 8:
+                    rslt += five + one * (d - 5)
+                else:  # d == 9
+                    rslt += one + ten
+
+            i += 1
+
         return rslt
 
 
 def main():
     sol = Solution()
-    r = sol.numDigits(3749)
+    # r = sol.numDigits(3749)
     s = sol.intToRoman(3749)
     print(s)
     pass
