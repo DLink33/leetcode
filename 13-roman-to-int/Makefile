@@ -30,7 +30,8 @@ TARGET := $(BUILD_DIR)/sol
 
 # Default target: build the binary
 .PHONY: all
-all: $(TARGET)
+# Default to running the test target (safe when sources don't provide a demo main)
+all: test
 
 # Link: make build/sol from objects
 $(TARGET): $(OBJS)
@@ -47,8 +48,23 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 
 # Utilities
 .PHONY: run clean
-run: $(TARGET)                # build then run
-	./$(TARGET)
+# Running tests is the safe default run action (test provides a runnable main)
+run: test
+
+TEST_SRC := $(wildcard test/*.c)
+TEST_OBJS := $(patsubst test/%.c,$(BUILD_DIR)/%.o,$(TEST_SRC))
+
+# Build test objects
+$(BUILD_DIR)/%.o: test/%.c
+	@mkdir -p $(@D)
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
+
+# Link test binary (links implementation object and test object(s))
+.PHONY: test
+test: $(OBJS) $(TEST_OBJS)
+	@mkdir -p $(BUILD_DIR)
+	$(CC) -o $(BUILD_DIR)/test_runner $(OBJS) $(TEST_OBJS)
+	$(BUILD_DIR)/test_runner
 
 clean:                        # remove all build outputs
 	rm -rf $(BUILD_DIR)

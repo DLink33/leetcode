@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-#include "../include/roman-to-int.h"
+#include "roman-to-int.h"
 
 int roman2int(string s) {
     int rslt = 0;
@@ -44,11 +44,4 @@ int roman2int(string s) {
         i++;
     } 
     return rslt;
-}
-
-int main(void){
-    string s = "MMMDCCXLIX";
-    int r = roman2int(s);
-    printf("%d\n", r);
-    return 0;
 }
