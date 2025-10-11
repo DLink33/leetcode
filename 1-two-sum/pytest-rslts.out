@@ -1,0 +1,30 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.11, pytest-8.4.2, pluggy-1.6.0 -- /home/vulpski/projects/leetcode/1-two-sum/.venv/bin/python3.11
+cachedir: .pytest_cache
+rootdir: /home/vulpski/projects/leetcode/1-two-sum
+configfile: pyproject.toml
+testpaths: tests
+plugins: cov-7.0.0
+collecting ... collected 11 items
+
+tests/test_lc001_two_sum.py::test_two_sum[nums0-9-expected0] PASSED      [  9%]
+tests/test_lc001_two_sum.py::test_two_sum[nums1-6-expected1] PASSED      [ 18%]
+tests/test_lc001_two_sum.py::test_two_sum[nums2-6-expected2] PASSED      [ 27%]
+tests/test_lc001_two_sum.py::test_two_sum[nums3-0-expected3] PASSED      [ 36%]
+tests/test_lc001_two_sum.py::test_two_sum[nums4--8-expected4] PASSED     [ 45%]
+tests/test_lc001_two_sum.py::test_two_sum[nums5-10-expected5] PASSED     [ 54%]
+tests/test_lc001_two_sum.py::test_two_sum[nums6-3-expected6] PASSED      [ 63%]
+tests/test_lc001_two_sum.py::test_two_sum[nums7-5-expected7] PASSED      [ 72%]
+tests/test_lc001_two_sum.py::test_two_sum[nums8-7-expected8] PASSED      [ 81%]
+tests/test_lc001_two_sum.py::test_two_sum[nums9-0-expected9] PASSED      [ 90%]
+tests/test_lc001_two_sum.py::test_two_sum[nums10-3-expected10] PASSED    [100%]
+
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.11.11-final-0 _______________
+
+Name    Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------
+TOTAL      10      0      4      0   100%
+
+1 file skipped due to complete coverage.
+============================== 11 passed in 0.16s ==============================

@@ -8,8 +8,6 @@ class Solution:
 
         for i, n in enumerate(nums):
             c = target - n
-            if c < 0:
-                continue
             if c in numsMap:
                 return [numsMap[c], i]
             numsMap[n] = i
