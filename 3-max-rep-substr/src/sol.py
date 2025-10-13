@@ -1,7 +1,7 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        rslt = 0
-        cand = ""
+        rslt: int = 0
+        cand: str = ""
         for i in range(0, len(s), 1):
             cand = s[i]
             rslt = max(rslt, len(cand))
@@ -10,6 +10,17 @@ class Solution:
                     break
                 cand += s[j]
                 rslt = max(rslt, len(cand))
+        return rslt
+
+    def lengthOfLongestSubstring2(self, s: str) -> int:
+        left: int = 0
+        last: dict[str, int] = {}
+        rslt: int = 0
+        for right, char in enumerate(s):
+            if char in last and last[char] >= left:
+                left = last[char] + 1
+            last[char] = right
+            rslt = max(rslt, right - left + 1)
         return rslt
 
 

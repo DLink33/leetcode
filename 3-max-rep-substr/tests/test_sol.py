@@ -21,7 +21,18 @@ def sol():
 @pytest.mark.parametrize("s, expected", CASES)
 def test_lengthOfLongestSubstring(s: str, expected: int):
     sol = Solution()
+    rslt = sol.lengthOfLongestSubstring(s)
     print(f'\nInput:\t\t"{s}"')
-    print(f"Result:\t\t{sol.lengthOfLongestSubstring(s)}")
+    print(f"Result:\t\t{rslt}")
     print(f"Expected:\t{expected}")
-    assert sol.lengthOfLongestSubstring(s) == expected
+    assert rslt == expected
+
+
+@pytest.mark.parametrize("s, expected", CASES)
+def test_lengthOfLongestSubstring2(s: str, expected: int):
+    sol = Solution()
+    rslt = sol.lengthOfLongestSubstring2(s)
+    print(f'\nInput:\t\t"{s}"')
+    print(f"Result:\t\t{rslt}")
+    print(f"Expected:\t{expected}")
+    assert rslt == expected
