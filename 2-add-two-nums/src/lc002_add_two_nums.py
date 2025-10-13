@@ -53,7 +53,7 @@ class Solution:
         currNode1 = l1
         currNode2 = l2
         currRsltNode = rslt
-        while currNode1 or currNode2:
+        while currNode1 or currNode2 or carry:
             val = 0
             if currNode1:
                 val += currNode1.val
@@ -70,14 +70,18 @@ class Solution:
 
 
 def main():
-    # num1 = 342
-    # num2 = 465
-    num1 = 0
-    num2 = 0
+    num1 = 342
+    num2 = 465
+    # num1 = 9999999
+    # num2 = 9999
 
     s = Solution()
     l1 = LinkedIntList(num1).head
     l2 = LinkedIntList(num2).head
+
+    print(f"Input 1:\n{l1}")
+    print(f"Input 2:\n{l2}")
+
     rslt = s.addTwoNumbers(l1, l2)
     if rslt is not None:
         print(f"Linked List Result:\n{rslt}")
