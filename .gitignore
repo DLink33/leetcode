@@ -12,6 +12,9 @@
 # Pytest cache
 .pytest_cache/
 
+# Pytest code coverage
+**/.coverage
+
 # Distribution / packaging
 build/
 dist/
