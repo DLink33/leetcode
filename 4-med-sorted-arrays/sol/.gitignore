@@ -1,0 +1,53 @@
+# Maven
+/target/
+/dependency-reduced-pom.xml
+
+# Keep Maven Wrapper (commit these)
+/.mvn/wrapper/maven-wrapper.jar
+!/mvnw
+!/mvnw.cmd
+!/.mvn/wrapper/
+
+# IDEs
+# IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse / JDT
+.project
+.classpath
+.settings/
+.factorypath
+.apt_generated/
+.apt_generated_tests/
+
+# VS Code (ignore everything except shareable configs)
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# Logs / JVM crash
+*.log
+hs_err_pid*
+replay_pid*
+*.hprof
+
+# Compiled junk outside Maven (if you ever run javac manually)
+*.class
+/bin/
+/out/
+
+# Tags / editors
+tags
+TAGS
+*~
+*.swp
+*.swo
+
+# OS cruft (safe even in WSL)
+.DS_Store
+Thumbs.db
