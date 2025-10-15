@@ -1,19 +1,42 @@
 package io.github.dlink33.leetcode.lc004_med_sorted_arrays;
 
 public class MergeTwoSortedArrays {
-    private
-    int[] arr1;
-    int[] arr2;
-    int[] merged;
-    float median;
+    private int[] arr1, arr2, merged;
+    private double median;
 
     public MergeTwoSortedArrays(int[] inArr1, int[] inArr2) {
-        // Deep Copy of array for no side effects
-        this.arr1 = this.cpyIntArr(inArr1);
-        this.arr2 = this.cpyIntArr(inArr2);
+        // Deep Copy of array for no side effects outside of this class 
+        this.arr1 = MergeTwoSortedArrays.cpyIntArr(inArr1);
+        this.arr2 = MergeTwoSortedArrays.cpyIntArr(inArr2);
+        this.mergeArrys();
+        this.calcMedian();
     }
 
-    private int[] cpyIntArr(int[] arr) {
+    public int[] getArr1(){
+        return this.arr1;
+    }
+    
+    public int[] getArr2(){
+        return this.arr2;
+    }
+
+    public void setArr1(int[] arr){
+        this.arr1 = arr;
+    }
+    
+    public void setArr2(int[] arr){
+        this.arr2 = arr;
+    }
+
+    public int[] getMerged(){
+        return this.merged;
+    }
+
+    public double getMedian(){
+        return this.median;
+    }
+
+    private static int[] cpyIntArr(int[] arr) {
         int[] rslt = new int[arr.length];
         for(int i=0; i<arr.length; i++){
             rslt[i] = arr[i];
@@ -21,7 +44,7 @@ public class MergeTwoSortedArrays {
         return rslt;
     }
 
-    public int[] mergeArrys() {
+    private void mergeArrys() {
         int len1 = this.arr1.length;
         int len2 = this.arr2.length;
         int[] rslt = new int[len1+len2];
@@ -37,10 +60,29 @@ public class MergeTwoSortedArrays {
             }
             k++;
         }
-        while(){}
-        while(){}
+        while(i<len1){
+            rslt[k] = this.arr1[i];
+            i++;
+            k++;
+        }
+        while(j<len2){
+            rslt[k] = this.arr2[j];
+            j++;
+            k++;
+        }
+        this.merged = rslt;
+    }
 
-        return rslt;
+    private void calcMedian(){
+        int len = this.merged.length;
+        if (len % 2 != 0) {  
+            //Odd
+            this.median = (double)this.merged[len/2];
+        }
+        else {  
+            //Even
+            this.median = (double)((this.merged[len/2]) + (this.merged[(len/2)-1])) / 2.0;
+        }
     }
 
 }
