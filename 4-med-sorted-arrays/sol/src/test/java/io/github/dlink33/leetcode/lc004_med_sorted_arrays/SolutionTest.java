@@ -5,7 +5,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.Arrays;
 
-class SolultionTest {
+class SolutionTest {
 
     private static int[] parse(String s) {
         if (s == null || s.isBlank()) return new int[0];

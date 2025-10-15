@@ -75,14 +75,7 @@ public class MergeTwoSortedArrays {
 
     private void calcMedian(){
         int len = this.merged.length;
-        if (len % 2 != 0) {  
-            //Odd
-            this.median = (double)this.merged[len/2];
-        }
-        else {  
-            //Even
-            this.median = (double)((this.merged[len/2]) + (this.merged[(len/2)-1])) / 2.0;
-        }
+        this.median = (len % 2 == 0) ? ((double)((this.merged[len/2]) + (this.merged[(len/2)-1])) / 2.0) : ((double)this.merged[len/2]);
     }
 
 }
