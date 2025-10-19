@@ -1,43 +1,51 @@
-// eslint.config.js (ESLint "flat" config; works great for JS now and TS later)
+// eslint.config.js
 import js from '@eslint/js';
+import eslintPluginImport from 'eslint-plugin-import';
+import eslintPluginUnusedImports from 'eslint-plugin-unused-imports';
+import globals from 'globals';
 
 export default [
-  // Ignore build artifacts and deps
-  {
-    ignores: ['node_modules', 'dist', 'coverage']
-  },
+  { ignores: ['node_modules', 'dist', 'coverage'] },
 
-  // Base JS rules for Node + ESM
   {
     files: ['**/*.{js,mjs,cjs}'],
     languageOptions: {
       ecmaVersion: 'latest',
-      sourceType: 'module'
+      sourceType: 'module',
+      // 👇 This line tells ESLint about Node built-ins like console, process, __dirname, etc.
+      globals: { ...globals.node },
     },
     plugins: {
-      // these are loaded by name from node_modules
-      'unused-imports': await import('eslint-plugin-unused-imports'),
-      import: await import('eslint-plugin-import')
+      import: eslintPluginImport,
+      'unused-imports': eslintPluginUnusedImports,
     },
     rules: {
       ...js.configs.recommended.rules,
 
-      // Quality
-      'no-console': 'off',
-      'no-constant-condition': ['error', { checkLoops: false }],
-
-      // Imports
       'import/first': 'error',
       'import/newline-after-import': 'error',
       'import/no-duplicates': 'error',
 
-      // Unused code
       'unused-imports/no-unused-imports': 'error',
       'unused-imports/no-unused-vars': [
         'warn',
-        { args: 'after-used', argsIgnorePattern: '^_', varsIgnorePattern: '^_' }
-      ]
-    }
-  }
-];
+        {
+          vars: 'all',
+          args: 'after-used',
+          ignoreRestSiblings: true,
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
 
+      'no-console': 'off',
+      'no-constant-condition': ['error', { checkLoops: false }],
+    },
+  },
+
+  // (optional) If you have Vitest tests, enable test globals in test files:
+  // {
+  //   files: ['test/**/*.{js,ts}'],
+  //   languageOptions: { globals: { ...globals.node, ...globals.jest } } // Vitest uses Jest-like globals
+  // }
+];
