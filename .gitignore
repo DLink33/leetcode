@@ -7,7 +7,7 @@
 **/.venv/
 
 # VS Code
-.vscode/
+**/.vscode/
 
 # Pytest cache
 .pytest_cache/
@@ -29,3 +29,7 @@ pip-wheel-metadata/
 
 # IDEs
 .idea/
+
+# Node
+**/node_modules
+
