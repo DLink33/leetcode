@@ -1,9 +1,9 @@
-export function greet(name = "world") {
-    console.log(`Hello ${name}!`);
+export function greet(name = 'world') {
+  console.log(`Hello ${name}!`);
 }
 
-function main(){
-    greet("david");
+function main() {
+  greet('david');
 }
 
 main();
