@@ -1,7 +1,9 @@
 import { longestCommonPrefix } from './solution.js';
 
 export function greet(name = 'world') {
-  console.log(`Hello ${name}!`);
+  let rslt = `Hello ${name}!`;
+  console.log(rslt);
+  return rslt;
 }
 
 function main() {
