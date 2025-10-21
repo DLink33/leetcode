@@ -33,12 +33,19 @@ export var threeSum = function (nums) {
   return rslt;
 };
 
-export var threSumNaive = function (nums) {
-  const rslt = [];
+export var threeSumNaive = function (nums) {
+  const rslt = new Set();
   const n = nums.length;
   for (let i = 0; i < n - 2; ++i) {
     for (let j = i + 1; j < n - 1; ++j) {
-      for (let k = j + 1; k < n; ++k) {}
+      for (let k = j + 1; k < n; ++k) {
+        let sum = nums[i] + nums[j] + nums[k];
+        if (sum === 0) {
+          const temp = ([nums[i], nums[j], nums[k]].sort((a, b)=> a-b));
+          rslt.add(temp.join(','));
+        }
+      }
     }
   }
+  return Array.from(rslt, s => s.split(',').map(Number));
 };
