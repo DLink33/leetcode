@@ -1,7 +1,7 @@
 # 🧠 LeetCode Solutions
 
 Welcome to my LeetCode solutions repository!  
-This is a collection of solutions I've written while practicing data structures, algorithms, and system design problems — primarily in **Python**, **C++**, and **JavaScript**.
+This is a collection of solutions I've written while practicing data structures, algorithms, and system design problems — primarily in **Python**, **C++**, **C**, **Java**, & **JavaScript**.
 
 The main goals of this project are:
 - 🧠 Strengthen problem-solving skills  
