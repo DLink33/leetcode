@@ -2,7 +2,7 @@
 # include/solution.hpp
 # src/main.cpp src/solution.cpp
 
-PROJECT ?= remove_dups
+PROJECT ?= solution
 CXX      ?= g++
 CXXFLAGS ?= -std=c++17 -Wall -Wextra -O2 -Iinclude
 

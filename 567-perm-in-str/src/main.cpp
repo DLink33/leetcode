@@ -4,6 +4,7 @@
 int main() {
   std::cout << "Hello, World!" << std::endl;
   Solution sol;
-  bool rslt = sol.checkInclusion("thing1", "thing12");
+  bool rslt = sol.checkInclusion("ab", "eidbaooo");
+  std::cout << rslt << std::endl;
   return 0;
 }
