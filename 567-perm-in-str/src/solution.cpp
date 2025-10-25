@@ -12,7 +12,7 @@ bool Solution::checkInclusion(std::string s1, std::string s2) {
   counter = 0;
 
   while (right <= lastIndex) {
-
+    
   }
 
   return rslt;
