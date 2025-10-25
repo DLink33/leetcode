@@ -9,6 +9,9 @@
 # VS Code
 **/.vscode/
 
+#binaries
+**/bin/
+
 # Pytest cache
 .pytest_cache/
 
