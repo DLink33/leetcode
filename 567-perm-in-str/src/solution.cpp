@@ -8,7 +8,7 @@ bool Solution::checkInclusion(std::string s1, std::string s2) {
   len1 = s1.length();
   len2 = s2.length();
   if (len1 > len2) return false;
-  left  = 0;
+  left = 0;
   right = s1.length()-1;
   
   initWindow(len1, s2, charMap);
