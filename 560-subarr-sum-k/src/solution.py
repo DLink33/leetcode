@@ -27,6 +27,32 @@ class Solution:
 
         return rslt
 
+    def subPosArraySum(self, nums: list[int], k: int) -> int:
+        left: int = 0
+        right: int = 0
+        windowSum: int = nums[0]
+        rslt: int = 0
+
+        while left < len(nums):
+            if left > right:
+                left = right
+                windowSum = nums[left]
+
+            if windowSum < k:
+                right += 1
+                if right == len(nums):
+                    break
+                windowSum += nums[right]
+            elif windowSum > k:
+                windowSum -= nums[left]
+                left += 1
+            else:
+                rslt += 1
+                windowSum -= nums[left]
+                left += 1
+
+        return rslt
+
 
 def main():
     sol: Solution = Solution()
