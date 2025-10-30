@@ -1,5 +1,9 @@
 class Solution:
     def subarraySum(self, nums: list[int], k: int) -> int:
+        """
+        Time Complexity: O(n) - iterate through each element once
+        Space Complexity: O(n) - Use a hashmap to store at most each element once
+        """
         if not nums:
             return 0
 
@@ -28,6 +32,10 @@ class Solution:
         return rslt
 
     def subPosArraySum(self, nums: list[int], k: int) -> int:
+        """
+        Time Complexity: O(n) - iterate through each element once
+        Space Complexity: O(1) - we are not storing anything related to the array in memory, just some tracking local variables
+        """
         left: int = 0
         right: int = 0
         windowSum: int = nums[0]
