@@ -9,7 +9,7 @@ class ListNode:
 
 class Solution:
     def getSize(self, head: Optional[ListNode]) -> int:
-        curr: ListNode = head
+        curr: Optional[ListNode] = head
         rslt: int = 0
         while curr:
             rslt += 1
@@ -19,8 +19,8 @@ class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
         size = self.getSize(head)
 
-        curr = head
-        prev = None
+        curr: Optional[ListNode] = head
+        prev: ListNode = None
         counter = 0
 
         while size - counter > n:
