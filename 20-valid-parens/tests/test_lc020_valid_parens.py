@@ -1,4 +1,3 @@
-# tests/test_lc006_zigzag.py
 import pytest
 
 from Solution import Solution
@@ -50,8 +49,7 @@ def sol():
         ("([]){}", True),
         ("([)()]", False),  # interleaved wrong
         ("[(){}([])]", True),
-        ("[(){}([)] ]", False),  # spacing not in LC input; remove space if needed
     ],
 )
-def test_convert(sol: Solution, s: str, expected: str):
+def test_convert(sol: Solution, s: str, expected: bool):
     assert sol.isValid(s) == expected
