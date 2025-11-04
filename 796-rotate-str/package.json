@@ -1,0 +1,27 @@
+{
+  "name": "796-rotate-str",
+  "version": "1.0.0",
+  "description": "leetcode problem",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "vitest"
+  },
+  "keywords": [],
+  "author": "David Linkowski",
+  "license": "ISC",
+  "packageManager": "pnpm@9.12.0",
+  "devDependencies": {
+    "vitest": "^4.0.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n/a.git"
+  },
+  "bugs": {
+    "url": "https://github.com/n/a/issues"
+  },
+  "homepage": "https://github.com/n/a#readme"
+}
