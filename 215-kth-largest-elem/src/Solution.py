@@ -1,6 +1,7 @@
 from linear.PriorityQueue import PriorityQueue
 from typing import Callable
 import logging as log
+from copy import deepcopy
 
 log.basicConfig(level=log.INFO)
 
@@ -14,6 +15,7 @@ class Solution:
         return pq.peek()
     
     def findKthLargest_sort(self, nums: list[int], k: int) -> int:
+        nums = deepcopy(nums)
         nums.sort(reverse=True)
         log.info(f"Sorted nums: {nums}")
         return nums[k-1]
