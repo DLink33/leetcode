@@ -1,17 +1,6 @@
 package leet;
 
-import java.lang.Math;
-
 public class Solution {
-    private int getDigits(int x) {
-        if (x == 0) return 1;
-        int n = 0;
-        while (x != 0) {
-            x/=10;
-            ++n;
-        }
-        return n;
-    }
     public int reverse(int x) {
         boolean neg = false;
         if (x < 0) {

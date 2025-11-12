@@ -1,3 +1,18 @@
+[project]
+name = "leetcode-215-kth-largest-element-in-an-array"
+version = "0.1.0"
+description = "Solution to leetcode 215 - Kth Largest Element in an Array"
+authors = [
+    { name = "David Linkowski", email = "david.linkowski@gmail.com" }
+]
+
+pythonpath = ["src", "../../fundamentals/data-structures/python"]
+
 [tool.pytest.ini_options]
 pythonpath = ["src", "../../fundamentals/data-structures/python"]
 testpaths = ["tests"]
+dependencies = [
+    "pytest",
+    "pytest-cov",
+    "pytest-mock",
+]
