@@ -1,7 +1,7 @@
 from linear.PriorityQueue import PriorityQueue
 from typing import Callable
 import logging as log
-from copy import deepcopy
+from copy import copy
 
 log.basicConfig(level=log.INFO)
 
@@ -14,12 +14,6 @@ class Solution:
             log.info(f"pq after pop: {pq}")
         return pq.peek()
     
-    def findKthLargest_sort(self, nums: list[int], k: int) -> int:
-        nums = deepcopy(nums)
-        nums.sort(reverse=True)
-        log.info(f"Sorted nums: {nums}")
-        return nums[k-1]
-    
     def findKthLargest_minPQ(self, nums: list[int], k: int) -> int:
         min_pq:PriorityQueue[int] = PriorityQueue([], lambda x,y:x<y)
         for num in nums:
@@ -29,6 +23,13 @@ class Solution:
                 removed = min_pq.pop()
                 log.info(f"min_pq after popping {removed}: {min_pq}")
         return min_pq.peek()
+    
+    def findKthLargest_sort(self, nums: list[int], k: int) -> int:
+        nums = copy(nums)
+        nums.sort(reverse=True)
+        log.info(f"Sorted nums: {nums}")
+        return nums[k-1]
+    
         
 SMOKE_TEST_PARAMS: list[tuple[list[int], int, int]] = [
     ([3,2,1,5,6,4], 2, 5),

@@ -11,8 +11,4 @@ pythonpath = ["src", "../../fundamentals/data-structures/python"]
 [tool.pytest.ini_options]
 pythonpath = ["src", "../../fundamentals/data-structures/python"]
 testpaths = ["tests"]
-dependencies = [
-    "pytest",
-    "pytest-cov",
-    "pytest-mock",
-]
+
