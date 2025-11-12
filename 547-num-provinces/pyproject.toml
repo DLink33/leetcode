@@ -1,5 +1,5 @@
 
-pythonpath = ["src", "/home/vulpski/projects/fundamentals/data-structures/python/"]
+pythonpath = ["src/", "/home/vulpski/projects/fundamentals/data-structures/python/"]
 
 [tool.poetry]
 name = "547-num-provinces"
@@ -32,5 +32,5 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
-pythonpath = ["src", "/home/vulpski/projects/fundamentals/data-structures/python/trees/"]
+pythonpath = ["src/", "/home/vulpski/projects/fundamentals/data-structures/python/trees/"]
 

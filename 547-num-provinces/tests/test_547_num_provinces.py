@@ -2,10 +2,11 @@ import pytest
 from src.Solution import Solution
 
 TEST_CASES = [
-    # Add your test cases here. Common patterns:
-    # (input_value, expected_value)
-    # ((arg1, arg2, ...), expected_value)
-    # ({"args": (a1, ...), "kwargs": {"k": v}}, expected_value)
+    ([[1,1,0],[1,1,0],[0,0,1]], 2),
+    ([[1,0,0],[0,1,0],[0,0,1]], 3),
+    ([[1,1,1],[1,1,1],[1,1,1]], 1),
+    ([[1]], 1),
+    ([[1,0],[0,1]], 2),
 ]
 
 @pytest.mark.parametrize("input, expected", TEST_CASES)
