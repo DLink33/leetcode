@@ -90,9 +90,10 @@ poetry install --no-interaction
 popd >/dev/null
 
 log "Creating src/Solution.py..."
-cat <<'EOL' > "$problem_name/src/Solution.py"
+problem_name_without_numbers=${problem_name//[0-9]/}
+cat > "$problem_name/src/Solution.py" <<EOL
 class Solution:
-    def solve(self, *args):
+    def ${problem_name_without_numbers//-/_}(self, *args):
         # Implement your solution here
         pass
 EOL
@@ -125,20 +126,21 @@ EOL
 mv "$problem_name/tests/test_template.py" "$problem_name/tests/test_${problem_name//-/_}.py"
 
 log "Writing README.md..."
-cat <<'EOL' > "$problem_name/README.md"
-# {{PROBLEM_NAME}}
+cat > "$problem_name/README.md" <<EOL
+# $problem_name Solution
+-----------
 
-This directory was scaffolded by `new-lc-sol.sh`.
+This directory was scaffolded by \`new-lc-sol.sh\`.
 
 Environment
 -----------
-A Python 3.11 virtual environment is created at `.venv/` in this project.
+A Python 3.11 virtual environment is created at \`.venv/\` in this project.
 Poetry is configured to install dependencies **into this venv** (no separate Poetry venv).
 
 Quick start
 -----------
-```bash
-cd {{PROBLEM_NAME}}
+bash 
+cd $problem_name
 
 # activate the venv
 . .venv/bin/activate
@@ -148,7 +150,6 @@ pytest -q
 
 # or run via Poetry (still uses the active .venv)
 poetry run pytest -q
-
 EOL
 
 echo "Finished creating Python3.11 solution scaffold for $problem_name!"

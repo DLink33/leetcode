@@ -1,4 +1,5 @@
-# {{PROBLEM_NAME}}
+# 547-num-provinces Solution
+-----------
 
 This directory was scaffolded by `new-lc-sol.sh`.
 
@@ -9,8 +10,8 @@ Poetry is configured to install dependencies **into this venv** (no separate Poe
 
 Quick start
 -----------
-```bash
-cd {{PROBLEM_NAME}}
+bash 
+cd 547-num-provinces
 
 # activate the venv
 . .venv/bin/activate
@@ -20,4 +21,3 @@ pytest -q
 
 # or run via Poetry (still uses the active .venv)
 poetry run pytest -q
-

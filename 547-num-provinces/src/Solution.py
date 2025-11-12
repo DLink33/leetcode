@@ -1,4 +1,4 @@
 class Solution:
-    def solve(self, *args):
+    def num_provinces(self, *args):
         # Implement your solution here
         pass
