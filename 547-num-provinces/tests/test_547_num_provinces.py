@@ -14,8 +14,8 @@ def test_solution(input, expected):
     if isinstance(input, dict) and ("args" in input or "kwargs" in input):
         args = input.get("args", ())
         kwargs = input.get("kwargs", {})
-        assert sol.solve(*args, **kwargs) == expected
+        assert sol.findCircleNum(*args, **kwargs) == expected
     elif isinstance(input, tuple):
-        assert sol.solve(*input) == expected
+        assert sol.findCircleNum(*input) == expected
     else:
-        assert sol.solve(input) == expected
+        assert sol.findCircleNum(input) == expected

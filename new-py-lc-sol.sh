@@ -19,7 +19,7 @@ mkdir -p "$problem_name/src" "$problem_name/tests"
 log "Writing pyproject.toml..."
 cat <<EOL > "$problem_name/pyproject.toml"
 
-pythonpath = ["src", "../../fundamentals/data-structures/python"]
+pythonpath = ["src", "/home/vulpski/projects/fundamentals/data-structures/python/"]
 
 [tool.poetry]
 name = "$problem_name"
@@ -52,7 +52,7 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
-pythonpath = ["src", "../../fundamentals/data-structures/python"]
+pythonpath = ["src", "/home/vulpski/projects/fundamentals/data-structures/python/"]
 
 EOL
 
@@ -95,7 +95,14 @@ cat > "$problem_name/src/Solution.py" <<EOL
 class Solution:
     def ${problem_name_without_numbers//-/_}(self, *args):
         # Implement your solution here
-        pass
+        raise NotImplementedError
+
+def main():
+    raise NotImplementedError
+
+if __name__ == '__main__':
+    main()
+  
 EOL
 
 log "Creating tests/test_<name>.py..."
