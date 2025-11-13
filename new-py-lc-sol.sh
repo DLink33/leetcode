@@ -16,11 +16,20 @@ log "Scaffolding project structure for '$problem_name'..."
 mkdir -p "$problem_name/src" "$problem_name/tests"
 : > "$problem_name/src/__init__.py"
 
+log "Createing project-level VS Code configuration..."
+mkdir -p "$problem_name/.vscode/"
+cat > "$problem_name/.vscode/settings.json" << EOL
+{
+  "python.analysis.extraPaths": [
+    "./src",
+    "/home/vulpski/projects/fundamentals/data-structures/python/trees"
+  ]
+}
+
+EOL
+
 log "Writing pyproject.toml..."
 cat <<EOL > "$problem_name/pyproject.toml"
-
-pythonpath = ["src", "/home/vulpski/projects/fundamentals/data-structures/python/"]
-
 [tool.poetry]
 name = "$problem_name"
 version = "0.1.0"
@@ -35,7 +44,6 @@ python = "^3.11"
 pytest = "^7.4"
 pytest-cov = "^4.0"
 black = "^24.3"
-# use a broad isort constraint to avoid strict resolution failures across indexes
 isort = "^5.0"
 flake8 = "^6.0"
 mypy = "^1.7"
@@ -52,7 +60,14 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
-pythonpath = ["src", "/home/vulpski/projects/fundamentals/data-structures/python/"]
+pythonpath = [
+  "src/",
+  "/home/vulpski/projects/fundamentals/data-structures/python/trees",
+]
+testpaths = [
+  "tests",
+]
+
 
 EOL
 
@@ -107,27 +122,33 @@ EOL
 
 log "Creating tests/test_<name>.py..."
 cat <<'EOL' > "$problem_name/tests/test_template.py"
-import pytest
-from src.Solution import Solution
+from typing import Any
 
-TEST_CASES = [
+import pytest
+from Solution import Solution
+
+# A test case is: (input_payload, expected_output)
+TestCase = tuple[Any, Any]
+
+TEST_CASES: list[TestCase] = [
     # Add your test cases here. Common patterns:
     # (input_value, expected_value)
     # ((arg1, arg2, ...), expected_value)
     # ({"args": (a1, ...), "kwargs": {"k": v}}, expected_value)
 ]
 
-@pytest.mark.parametrize("input, expected", TEST_CASES)
-def test_solution(input, expected):
-    sol: Solution = Solution()
-    if isinstance(input, dict) and ("args" in input or "kwargs" in input):
-        args = input.get("args", ())
-        kwargs = input.get("kwargs", {})
+
+@pytest.mark.parametrize(("case_input", "expected"), TEST_CASES)
+def test_solution(case_input: Any, expected: Any) -> None:
+    sol = Solution()
+    if isinstance(case_input, dict) and ("args" in case_input or "kwargs" in case_input):
+        args = case_input.get("args", ())
+        kwargs = case_input.get("kwargs", {})
         assert sol.solve(*args, **kwargs) == expected
-    elif isinstance(input, tuple):
-        assert sol.solve(*input) == expected
+    elif isinstance(case_input, tuple):
+        assert sol.solve(*case_input) == expected
     else:
-        assert sol.solve(input) == expected
+        assert sol.solve(case_input) == expected
 EOL
 
 mv "$problem_name/tests/test_template.py" "$problem_name/tests/test_${problem_name//-/_}.py"
