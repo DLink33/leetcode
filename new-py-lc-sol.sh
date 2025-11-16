@@ -113,6 +113,7 @@ class Solution:
         raise NotImplementedError
 
 def main():
+    sol: Solution = Solution()
     raise NotImplementedError
 
 if __name__ == '__main__':
