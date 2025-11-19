@@ -8,9 +8,16 @@ TestCase = tuple[Any, Any]
 
 TEST_CASES: list[TestCase] = [
     # Add your test cases here. Common patterns:
-    # (input_value, expected_value)
-    # ((arg1, arg2, ...), expected_value)
-    # ({"args": (a1, ...), "kwargs": {"k": v}}, expected_value)
+    ([1,2,3,4], [24, 12, 8, 6]),
+    ([0,0], [0, 0]),
+    ([1,0], [0, 1]),
+    ([0,1,2,3], [6, 0, 0, 0]),
+    ([5], [1]),
+    ([1, -1, 1, -1], [1, -1, 1, -1]),
+    ([2,3,4,5], [60, 40, 30, 24]),
+    ([10, 0, 5], [0, 50, 0]),
+    ([1,2], [2,1]),
+    ([1000, 2000, 3000], [6000000, 3000000, 2000000]),
 ]
 
 
