@@ -38,4 +38,4 @@ def test_solution(case_input: Any, expected: Any) -> None:
     elif isinstance(case_input, tuple):
         assert sol.climbStairsIterative(*case_input) == expected
     else:
-        assert sol.climbStairsIterative(case_input) == expected
+        assert sol.climbStairsIterative(case_input) == expected # pyright: ignore[reportArgumentType]
