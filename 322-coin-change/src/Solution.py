@@ -8,7 +8,7 @@ class Solution:
                 if c <= i:
                     dp[i] = min(dp[i], dp[i-c]+1)
 
-        return dp[amount]
+        return dp[amount] if dp[amount] != LARGEST else -1
 
 
 def main():
