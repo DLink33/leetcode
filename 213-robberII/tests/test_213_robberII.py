@@ -20,8 +20,8 @@ def test_solution(case_input: Any, expected: Any) -> None:
     if isinstance(case_input, dict) and ("args" in case_input or "kwargs" in case_input):
         args = case_input.get("args", ())
         kwargs = case_input.get("kwargs", {})
-        assert sol.solve(*args, **kwargs) == expected
+        assert sol.rob(*args, **kwargs) == expected
     elif isinstance(case_input, tuple):
-        assert sol.solve(*case_input) == expected
+        assert sol.rob(*case_input) == expected
     else:
-        assert sol.solve(case_input) == expected
+        assert sol.rob(case_input) == expected

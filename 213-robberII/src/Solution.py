@@ -1,5 +1,5 @@
 class Solution:
-    def _robberII(self, *args):
+    def rob(self, nums: list[int]) -> int:
         # Implement your solution here
         raise NotImplementedError
 
