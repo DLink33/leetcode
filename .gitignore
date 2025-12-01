@@ -29,6 +29,7 @@ dist/
 
 # Portable Python
 pip-wheel-metadata/
+**/poetry.lock
 
 # IDEs
 .idea/
