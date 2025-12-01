@@ -21,8 +21,8 @@ mkdir -p "$problem_name/.vscode/"
 cat > "$problem_name/.vscode/settings.json" << EOL
 {
   "python.analysis.extraPaths": [
-    "./src",
-    "/home/vulpski/projects/fundamentals/data-structures/python/trees"
+    "/home/vulpski/projects/fundamentals/data-structures/python/trees",
+    "./src"
   ]
 }
 
@@ -118,7 +118,7 @@ def main():
 
 if __name__ == '__main__':
     main()
-  
+
 EOL
 
 log "Creating tests/test_<name>.py..."
@@ -168,7 +168,7 @@ Poetry is configured to install dependencies **into this venv** (no separate Poe
 
 Quick start
 -----------
-bash 
+bash
 cd $problem_name
 
 # activate the venv
