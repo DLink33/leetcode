@@ -7,10 +7,17 @@ from Solution import Solution
 TestCase = tuple[Any, Any]
 
 TEST_CASES: list[TestCase] = [
-    # Add your test cases here. Common patterns:
-    # (input_value, expected_value)
-    # ((arg1, arg2, ...), expected_value)
-    # ({"args": (a1, ...), "kwargs": {"k": v}}, expected_value)
+    ((5, [1, 2, 5]), 4),
+    ((3, [2]), 0),
+    ((10, [10]), 1),
+    ((0, [1, 2, 3]), 1),
+    ((7, [1, 2, 3]), 8),
+    ((4, [1, 2, 5]), 3),
+    ((100, [1, 5, 10, 25]), 242),
+    ((50, [2, 5, 10, 20, 50]), 35),
+    ((1, []), 0),
+    ((0, []), 1),
+    ((500, [1, 2, 5, 10, 20, 50, 100, 200, 500]), 6295435),
 ]
 
 
@@ -20,8 +27,8 @@ def test_solution(case_input: Any, expected: Any) -> None:
     if isinstance(case_input, dict) and ("args" in case_input or "kwargs" in case_input):
         args = case_input.get("args", ())
         kwargs = case_input.get("kwargs", {})
-        assert sol.solve(*args, **kwargs) == expected
+        assert sol.change(*args, **kwargs) == expected
     elif isinstance(case_input, tuple):
-        assert sol.solve(*case_input) == expected
+        assert sol.change(*case_input) == expected
     else:
-        assert sol.solve(case_input) == expected
+        assert sol.change(case_input) == expected  # pyright: ignore[reportCallIssue]
