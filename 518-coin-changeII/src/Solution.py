@@ -1,6 +1,8 @@
 class Solution:
     def change(self, amount: int, coins: list[int]) -> int:
         # dp[x] = number of ways to make sum x using the coins considered so far
+        # Iinitialize dp array with zeros since initially we have 0 ways to make any amount
+        # except for amount 0 since there's one way to make amount 0 (using no coins).
         dp: list[int] = [0] * (amount + 1)
         
         # Base case: one way to make 0 — choose no coins (the empty set {})
@@ -19,7 +21,7 @@ class Solution:
 def main():
     sol: Solution = Solution()
     amount:int = 5
-    coins:list[int] = [1,2,5]
+    coins:list[int] = [1,2,3]
     print(sol.change(amount, coins))
 
 if __name__ == '__main__':
