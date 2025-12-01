@@ -7,10 +7,18 @@ from Solution import Solution
 TestCase = tuple[Any, Any]
 
 TEST_CASES: list[TestCase] = [
-    # Add your test cases here. Common patterns:
-    # (input_value, expected_value)
-    # ((arg1, arg2, ...), expected_value)
-    # ({"args": (a1, ...), "kwargs": {"k": v}}, expected_value)
+    ([2,3,2], 3),
+    ([1,2,3,1], 4),
+    ([0], 0),
+    ([1,2,3], 3),
+    ([1,3,1,3,100], 103),
+    ([200,3,140,20,10], 340),
+    ([1,1,1,1,1,1,1,1,1], 4),
+    ([100,1,1,100], 101),
+    ([1,2], 2),
+    ([2,1], 2),
+    ([1], 1),
+    ([5,1,1,5], 6),
 ]
 
 
@@ -24,4 +32,4 @@ def test_solution(case_input: Any, expected: Any) -> None:
     elif isinstance(case_input, tuple):
         assert sol.rob(*case_input) == expected
     else:
-        assert sol.rob(case_input) == expected
+        assert sol.rob(case_input) == expected # pyright: ignore[reportArgumentType]
