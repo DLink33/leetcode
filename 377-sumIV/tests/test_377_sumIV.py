@@ -7,10 +7,16 @@ from Solution import Solution
 TestCase = tuple[Any, Any]
 
 TEST_CASES: list[TestCase] = [
-    # Add your test cases here. Common patterns:
-    # (input_value, expected_value)
-    # ((arg1, arg2, ...), expected_value)
-    # ({"args": (a1, ...), "kwargs": {"k": v}}, expected_value)
+    (([1, 2, 3], 4), 7),
+    (([9], 3), 0),
+    (([2, 1, 3], 35), 1132436852),
+    (([10], 10), 1),
+    (([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 10), 512),
+    (([4, 2, 1], 32), 39882198),
+    (([3, 33, 333], 10000), 0),
+    (([1], 0), 1),
+    (([1, 2], 10), 89),
+    (([5, 3, 2], 8), 6),
 ]
 
 
@@ -20,8 +26,8 @@ def test_solution(case_input: Any, expected: Any) -> None:
     if isinstance(case_input, dict) and ("args" in case_input or "kwargs" in case_input):
         args = case_input.get("args", ())
         kwargs = case_input.get("kwargs", {})
-        assert sol.solve(*args, **kwargs) == expected
+        assert sol.combinationSum4(*args, **kwargs) == expected
     elif isinstance(case_input, tuple):
-        assert sol.solve(*case_input) == expected
+        assert sol.combinationSum4(*case_input) == expected
     else:
-        assert sol.solve(case_input) == expected
+        assert sol.combinationSum4(case_input) == expected # pyright: ignore[reportCallIssue]
