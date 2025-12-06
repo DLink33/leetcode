@@ -28,14 +28,14 @@ class Solution:
             if obstacleGrid[i][0] == 0 and dp[i-1][0] == 1:
                 dp[i][0] = 1
             else:
-                dp[i][0] = 0
+                break
                 
         # init the first row with appropriate 1s or 0s
         for j in range(1,n):
             if obstacleGrid[0][j] == 0 and dp[0][j-1] == 1:
                 dp[0][j] = 1
             else:
-                dp[0][j] = 0
+                break
 
         # iterate through dp and if we see an obstacle we know the number
         # of ways to get to that coord in the gird is 0. Otherwise, 
