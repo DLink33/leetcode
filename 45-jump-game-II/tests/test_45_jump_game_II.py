@@ -7,21 +7,21 @@ from Solution import Solution
 TestCase = tuple[Any, Any]
 
 TEST_CASES: list[TestCase] = [
-    # Add your test cases here. Common patterns:
-    # (input_value, expected_value)
-    # ((arg1, arg2, ...), expected_value)
-    # ({"args": (a1, ...), "kwargs": {"k": v}}, expected_value)
+    (([2, 3, 1, 1, 4],), 2),
+    (([2, 3, 0, 1, 4],), 2),
+    (([0],), 0),
+    (([1, 2, 3],), 2),
+    (([2, 1],), 1),
+    (([1, 1, 1, 1],), 3),
+    (([3, 2, 1, 0, 4],), 2),
+    (([2, 5, 0, 0],), 2),
+    (([1, 2, 1, 1, 1],), 3),
+    (([4, 1, 1, 3, 1, 1, 1],), 2),
+    (([1, 4, 3, 7, 1, 2, 6, 7, 6, 10],), 3),
 ]
-
 
 @pytest.mark.parametrize(("case_input", "expected"), TEST_CASES)
 def test_solution(case_input: Any, expected: Any) -> None:
     sol = Solution()
-    if isinstance(case_input, dict) and ("args" in case_input or "kwargs" in case_input):
-        args = case_input.get("args", ())
-        kwargs = case_input.get("kwargs", {})
-        assert sol.solve(*args, **kwargs) == expected
-    elif isinstance(case_input, tuple):
-        assert sol.solve(*case_input) == expected
-    else:
-        assert sol.solve(case_input) == expected
+    assert sol.jump_greedy(*case_input) == expected
+
