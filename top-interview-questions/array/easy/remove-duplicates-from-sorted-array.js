@@ -11,7 +11,7 @@ The first k elements of nums should contain the unique numbers in sorted order. 
 NOTES:
 I am thinking a two-pointer solution could solve this problem. The left pointer will point at the boundary of the final array (k - 1), and r will point to the next value in the original array. We will first check if the len of the input array is >= 2.  If it isn't we can return 0 or 1 depending on if they gave us a empty or a single element array.  If have at least 2 elements, this will work.  Start the r at index l+1. If the elem at l is different than the elem at r, then we know we have found a new boundary for the final array. We will...
   - increment l
-  - swap elems at r and l indicies
+  - swap elems at r and l indicies (or set arr[l] = arr[r])
 No matter what, we will always increment r.
 This pattern will repeat until r >= the array length.
 
@@ -38,7 +38,7 @@ var removeDuplicates = function (nums) {
   let l = 0;
   let r = l + 1;
 
-  while (r <= n - 1) {
+  while (r < n) {
     if (nums[l] != nums[r]) {
       l++;
       nums[l] = nums[r];
