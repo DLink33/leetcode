@@ -1,3 +1,4 @@
+/* global console */
 // Intersection of Two Arrays II
 
 /*
