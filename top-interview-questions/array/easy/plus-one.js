@@ -31,7 +31,7 @@ var plusOne = function(digits) {
         digits[i] = val;
         if (carry === 0) break;
         if( i===0 && carry !== 0) {
-            digits.splice(0, 0, carry);
+            digits.unshift(0, 0, carry);
         }
     }
     return digits;
@@ -41,5 +41,6 @@ function main() {
     let a = [1, 2];
     console.log(plusOne(a));
 }
+
 
 main();
