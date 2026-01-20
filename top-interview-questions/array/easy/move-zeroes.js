@@ -1,3 +1,4 @@
+/* global console */
 // Move Zeroes //
 /*
 Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
@@ -12,32 +13,33 @@ This can be done by swap adjacently until we reach the end of the array. We can 
  * @param {number[]} nums
  * @return {void} Do not return anything, modify nums in-place instead.
  */
-var moveZeroes = function(nums) {
-    const n = nums.length;
-    let l = 0;
-    let r = 0;
-    let temp;
-    while (r < n) {
-        if (nums[l] !== 0) l++;
-        while (true) {
-            if (r === n) break;
-            r++;
-            if (nums[r] !== 0) {
-                temp = nums[l];
-                nums[l] = nums[r];
-                nums[r] = temp;
-                break;
-            }
-        }
-        r++;
+
+var moveZeroes = function (nums) {
+  const n = nums.length;
+  let l = 0;
+  for (let r = 0; r < n; ++r) {
+    if (nums[r] !== 0) {
+      if (l !== r) {
+        [nums[r], nums[l]] = [nums[l], nums[r]];
+      }
+      l++;
     }
-    
+  }
+};
+
+// Another solution that avoids writes by performing one swap and writing zeros at the end
+var moveZeroes2 = function (nums) {
+  let w = 0;
+  for (let r = 0; r < nums.length; r++) {
+    if (nums[r] !== 0) nums[w++] = nums[r];
+  }
+  for (; w < nums.length; w++) nums[w] = 0;
 };
 
 function main() {
-    const nums = [0,1,0,3,12];
-    let rslt = moveZeroes(nums);
-    console.log(rslt);
+  const nums = [0, 1, 0, 3, 12];
+  moveZeroes(nums);
+  console.log(nums);
 }
 
 main();
