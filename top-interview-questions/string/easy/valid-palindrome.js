@@ -13,8 +13,22 @@ This can be solved with a two-pointer system, similar to reverse string.  Could 
  * @param {string} s
  * @return {boolean}
  */
-var isPalindrome = function (s) {};
+var isPalindrome = function (s) {
+  const stripped = s.toLocaleLowerCase().replace(/[^a-z0-9]/gi, "");
+  const n = stripped.length;
+  let l = 0;
+  let r = n - 1;
+  while (l < r) {
+    if (stripped[l] !== stripped[r]) return false;
+    l++;
+    r--;
+  }
+  return true;
+};
 
-function main() {}
+function main() {
+  const s = "a man, a plan, a canal: Panama";
+  console.log(isPalindrome(s));
+}
 
 main();
