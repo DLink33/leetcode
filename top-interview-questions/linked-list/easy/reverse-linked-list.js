@@ -21,8 +21,31 @@ ListNode.prototype.printList = function () {
  * @param {ListNode} head
  * @return {ListNode}
  */
-var reverseList = function (head) {};
+var reverseList = function (head) {
+  if (head === null || head.next === null) return head;
+  let curr = head;
+  let next = head.next;
+  let prev = null;
+  while (next !== null) {
+    curr.next = prev; // reverse the next pointer at curr
+    // iterate all pointers to their next value starting with prev, then curr, then next
+    prev = curr;
+    curr = next;
+    next = next.next;
+  }
+  // since our next
+  curr.next = prev;
+  return curr;
+};
 
-function main() {}
+function main() {
+  let head = new ListNode(
+    1,
+    new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5, null)))),
+  );
+
+  head = reverseList(head);
+  head.printList();
+}
 
 main();
