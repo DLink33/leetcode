@@ -30,11 +30,11 @@ ListNode.prototype.printList = function () {
 };
 
 ListNode.fromArr = (list) => {
-  let currNode = new ListNode(-1);
-  let head = currNode;
+  let curr = new ListNode(-1);
+  let head = curr;
   for (const value of list) {
-    currNode.next = new ListNode(value);
-    currNode = currNode.next;
+    curr.next = new ListNode(value);
+    curr = curr.next;
   }
   return head.next;
 };
