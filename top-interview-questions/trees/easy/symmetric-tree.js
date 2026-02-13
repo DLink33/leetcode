@@ -40,6 +40,45 @@ var isSymmetric = function (root) {
   return isMirror(root.left, root.right);
 };
 
+function isSymmetric2(root) {
+  if (root === null) return true;
+
+  const leftStack = [];
+  const rightStack = [];
+  let currL = root.left;
+  let currR = root.right;
+
+  while (
+    currL !== null ||
+    currR !== null ||
+    leftStack.length ||
+    rightStack.length
+  ) {
+    // descend as far as possible, but enforce mirror structure
+    while (true) {
+      if (currL === null && currR === null) break; // done descending this lane
+      if (currL === null || currR === null) return false; // structural mismatch
+
+      if (currL.val !== currR.val) return false; // value mismatch early (nice optimization)
+
+      leftStack.push(currL);
+      rightStack.push(currR);
+      currL = currL.left;
+      currR = currR.right;
+    }
+
+    // pop next frame
+    currL = leftStack.pop();
+    currR = rightStack.pop();
+
+    // move to the cross-children
+    currL = currL.right;
+    currR = currR.left;
+  }
+
+  return true;
+}
+
 function main() {
   const tree = new TreeNode(
     0,
@@ -47,8 +86,10 @@ function main() {
     new TreeNode(1, null, null),
   );
   tree.print();
-  let rslt = isSymmetric(tree);
-  console.log(rslt);
+  let rslt1 = isSymmetric(tree);
+  let rslt2 = isSymmetric2(tree);
+  console.log(rslt1);
+  console.log(rslt2);
 
   const tree2 = new TreeNode(
     0,
@@ -56,8 +97,10 @@ function main() {
     new TreeNode(2, null, null),
   );
   tree2.print();
-  rslt = isSymmetric(tree2);
-  console.log(rslt);
+  rslt1 = isSymmetric(tree2);
+  rslt2 = isSymmetric2(tree2);
+  console.log(rslt1);
+  console.log(rslt2);
 
   const tree3 = new TreeNode(
     0,
@@ -65,8 +108,10 @@ function main() {
     new TreeNode(1, null, new TreeNode(2, null, null)),
   );
   tree3.print();
-  rslt = isSymmetric(tree3);
-  console.log(rslt);
+  rslt1 = isSymmetric(tree3);
+  rslt2 = isSymmetric2(tree3);
+  console.log(rslt1);
+  console.log(rslt2);
 
   //complex tree
   const tree4 = new TreeNode(
@@ -75,8 +120,10 @@ function main() {
     new TreeNode(1, new TreeNode(3, null, null), new TreeNode(2, null, null)),
   );
   tree4.print();
-  rslt = isSymmetric(tree4);
-  console.log(rslt);
+  rslt1 = isSymmetric(tree4);
+  rslt2 = isSymmetric2(tree4);
+  console.log(rslt1);
+  console.log(rslt2);
 }
 
 main();
