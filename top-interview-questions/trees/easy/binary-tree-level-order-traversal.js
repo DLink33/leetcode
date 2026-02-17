@@ -38,8 +38,12 @@ var levelOrder = function(root) {
         for(let i=0; i < lvlSize; ++i) {
             const currNode = q.pop()
             lvl.push(currNode.val);
-            if (currNode.left) q.unshift(currNode.left);
-            if (currNode.right) q.unshift(currNode.right);
+            if (currNode.left) {
+                q.unshift(currNode.left);
+            }
+            if (currNode.right) {
+                q.unshift(currNode.right);
+            }
         }
         rslt.push(lvl);
     }
